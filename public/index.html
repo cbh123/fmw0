@@ -61,7 +61,7 @@
           give <br> us all the info we need to get<br>
           to you eating safer and better.</h2>
 					<br>
-          <button class="next" id="next" onclick="stage2()">Start</button>
+          <button class="next" onclick="stage2()">Start</button>
           <h2 class="progress" onclick="move()">1/11</h2>
       </div>
     </div>
@@ -137,7 +137,7 @@
 		    </div>
 
 				<!-- Next Button -->
-		    <button class="next" id="next" onclick="stage4()">Next</button>
+		    <button class="next" onclick="stage4()">Next</button>
 
 				<!-- Progress Bar. -->
 		    <h2 class="progress">3/11</h2>
@@ -347,7 +347,7 @@
 				<br><br>
 
 				<!-- Next Button -->
-        <button class="next" id="next" onclick="stage9()">Next</button>
+        <button class="next" onclick="stage9()">Next</button>
 
 				<!-- Other Restrictions Heading, Hidden by default -->
         <h2 id="otherHeading" style="display: none">Other Restrictions:</h2>
@@ -441,11 +441,11 @@
 
 				<!-- Encouraged foods -->
         <button class="encourage" id="fish2">Fish</button>
-        <button class="encourage"id="whiteMeat">White Meat</button>
+        <button class="encourage" id="whiteMeat">White Meat</button>
         <button class="encourage" id="eggs2">Eggs</button><br>
         <button class="encourage" id="redMeat">Red Meat</button>
-        <button class="encourage"id="shellFish">Shellfish</button>
-        <button class="encourage"id="protein">Protein</button><br>
+        <button class="encourage" id="shellFish">Shellfish</button>
+        <button class="encourage" id="protein">Protein</button><br>
 
 				<!-- BIIIIG Break. TODO: Unnecessary -->
         <br><br><br><br><br>
@@ -459,14 +459,17 @@
 				<!-- See above documentation on restrictions script  -->
 				<script>
 					var encouraged = [];
+					const greenButtonPressed = "rgb(11, 142, 54)";
 
 					$(".encourage").click(function(e) {
-						if ($(this).css("background-color") == "rgb(11,142,54)") {
+						console.log($(this).css("background-color"));
+				
+						if (($(this).css("background-color")) == greenButtonPressed) {
 						    $(this).css("background-color","white");
 						    $(this).css("color","grey");
 						    encouraged.splice( encouraged.indexOf($(this).html()),1);
 						} else {
-						    $(this).css("background-color","#0B8E36");
+						    $(this).css("background-color",greenButtonPressed);
 						    $(this).css("color","white");
 						    encouraged.push($(this).html());
 						}
