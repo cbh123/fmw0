@@ -1,5 +1,5 @@
 body {
-  font-family: "IBM Plex Sans", sans-serif;;
+  font-family: "IBM Plex Sans";
   color:white;
   margin:0px;
   background-color: #5461C4;
@@ -13,19 +13,16 @@ h1 {
 button:focus {outline:0;}
 input:focus {outline:0;}
 
-.button {
-    text-align: center;
-}
 
 /* STAGE 1: HELLO SIZE*/
-.startMessage h1 {
+.startMessage {
   font-size: 700%;
   margin-top: 10%;
   margin-bottom: 3%;
 }
 
 /* ALIGNMENT*/
-.message, .startMessage{
+.message, .startMessage {
   text-align: center;
 }
 
@@ -56,6 +53,17 @@ h3:hover {
     left: 10%;
 }
 
+@media only screen and (max-width: 600px) {
+/*
+   #back {
+        position: fixed;
+        height:30px;
+        margin-right: 0px;
+        margin-top: 2.6%;
+        left: 3%;
+    }
+*/
+}
 
 
 
@@ -83,6 +91,7 @@ input {
 
 #next,#next2,#next3,#next4,#next5{
     margin-top: 1%;
+    margin-left: 10px;
     border-radius: 25px;
     border: none;
     height: 30px;
@@ -152,6 +161,17 @@ input {
     left: 10%;
 }
 
+@media only screen and (max-width: 600px) {
+/*
+   #restrictionsBack {
+        position: fixed;
+        height:30px;
+        margin-right: 0px;
+        margin-top: 60%;
+        left: 3%;
+    }
+*/
+}
 
 /* STAGE 7: OTHER RESTRICTIONS LIST */
 #restrictionsList {
@@ -177,6 +197,15 @@ h2#funFactText {
         width:300px;
         margin: auto;
     }
+/*
+   #funFactBack {
+        position: fixed;
+        height:30px;
+        margin-right: 0px;
+        margin-top: 58%;
+        left: 3%;
+    }
+*/
 }
 
 /* STAGE 11: FINAL PAGE */
@@ -195,16 +224,11 @@ h2#funFactText {
     }
     .allBack,#back,#finalBack,#restrictionsBack,#funFactBack {
         position: fixed;
-        left: 25%;
-        bottom: 35px;
-        transform: translateX(-50%);
+        bottom: 90px;
+        left:49%;
     }
     .message{
         margin-top: 40%;
-    }
-
-    #higherMessage{
-        margin-top: 15%;
     }
 }
 
@@ -235,7 +259,19 @@ h2#funFactText {
 
 .progress {
     position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 15px;
+    bottom: 10px;
+    left:48%;
+}
+
+#myProgress {
+  bottom: 10px;
+  width: 100%;
+  background-color: grey;
+}
+
+#myBar {
+  bottom: 10px;
+  width: 0%;
+  height: 30px;
+  background-color: green;
 }
