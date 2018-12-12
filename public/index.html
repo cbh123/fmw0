@@ -1,0 +1,342 @@
+<!DOCTYPE HTML>
+<!--
+	FMW Form Draft
+-->
+<html>
+	<head>
+		<title>Feed Me Well</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,300i,400,500,600,700" rel="stylesheet">
+		<link rel="stylesheet" href="assets/css/main.css" />
+        
+        <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyABvi4Jf0qIAmv4_VJhVlfE9Z1UrYtkwxU",
+    authDomain: "fmw0-f4db8.firebaseapp.com",
+    databaseURL: "https://fmw0-f4db8.firebaseio.com",
+    projectId: "fmw0-f4db8",
+    storageBucket: "fmw0-f4db8.appspot.com",
+    messagingSenderId: "212916253872"
+  };
+  firebase.initializeApp(config);
+</script>
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+    <!-- js -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+	</head>
+
+  <body>
+<!-- TODO:
+    - status bar
+    - hey there should only show first name DONE
+    - ask kevin about fade out
+    - age
+    - allergy pages
+    - firebase connect
+    - more animations
+-->
+
+      <!--  STAGE 1: INTRODUCTION    -->
+      <h3 id="logo" onclick="stage1()">Feed Me Well</h3>
+<!--
+         <div id="myProgress">
+  <div id="myBar"></div>
+</div>
+-->
+      
+      <div class="stage1">
+        <div class="messageShadow">
+          <h1 onclick="stage2()">Hello!</h1>
+            <h2>This five minute form will
+            give <br> us all the info we need to get<br>
+            to you eating safer and better.</h2><br>
+            <button id="next" onclick="stage2()">Start</button>
+            <br><br><br>
+            <h2 class="progress" onclick="move()">1/11</h2>
+         
+<!--            <h2>1/9</h2>-->
+        </div>
+      </div>
+
+      <!--  STAGE 2: WHAT'S YOUR NAME    -->
+      <div class="stage2" style="display:none;">
+        <div class="message">
+          <h1>First, what's your name?</h1>
+            <!--            TODO: back button to black on hover-->
+            <img class="allBack" id="back" onclick="stage1()" src="images/back.png">
+            <input type="text" id="name" placeholder="" autocomplete="off"><br><br>
+            <button id="next2" onclick="stage3()">Next</button>
+            <h2 id="errorMessageName" style="display:none">Please enter a valid name.</h2>
+             <h2 class="progress">2/11</h2>
+            <!--   LISTEN FOR KEY PRESSES       -->
+            <script>
+            $("#name").on("keypress", function(e) {
+                var name = $("#name").val();
+                var result = errorInput(name,false);
+                changeBorder(this,result);
+                // on enter
+                if (e.keyCode == 13) {
+                    if (result) {
+                        console.log("User's name is: " + $("#name").val());
+                        stage3($("#name").val());
+                    } else {
+                        $("#errorMessageName").show();
+                    }
+                }
+            });
+            </script>
+        </div>
+      </div>
+      
+      <!--  STAGE 3: INFO    -->
+      <div class="stage3" style="display:none;">
+        <div class="message">
+          <h1 id="greetName" onclick="stage3()"></h1>
+            <img class="allBack" id="restrictionsBack" onclick="stage2()" src="images/back.png">
+            <div id="infoBox">
+                 <p>After completing your profile <br>(which will 
+                    only take a few minutes),<br> you’ll be
+                    never have to worry about<br> dining out with
+                     restrictions again.
+                </p>
+            </div>
+            <button id="next" onclick="stage4()">Next</button>
+            <h2 class="progress">3/11</h2>
+
+        </div>
+      </div>
+
+      <!--  STAGE 4: ENTER EMAIL    -->
+      <div class="stage4" style="display:none;">
+        <div class="message">
+           <h1>What's your email?</h1>
+           <img class="allBack" id="back" onclick=stage3($(&quot;#name&quot;).val()); src="images/back.png">
+            <input type="text" id="email" placeholder="" autocomplete="off"><br><br>
+            <button id="next2" onclick="stage5()">Next</button>
+            <h2 id="errorMessageEmail" style="display:none">Please enter a valid email.</h2>
+            <h2 class="progress">4/11</h2>
+            <!--   LISTEN FOR KEY PRESSES       -->
+            <script>
+            $("#email").on("keypress", function(e) {
+                var email = $("#email").val();
+                var result = errorInput(email,true);
+                changeBorder(this,result);
+
+                if (e.keyCode == 13) {
+                     if (result) {
+                        console.log("User email is: " + email);
+                        stage5();
+                        }
+                     else {
+                        $("#errorMessageEmail").show();
+                     }
+                    }
+            });
+            </script>
+            
+        </div>
+      </div>
+      
+      <!--      STAGE 5: HOW OLD ARE YOU  -->
+      <div class="stage5" style="display:none;">
+        <div class="message">
+          <h1>How old are you?</h1>
+            <h2>Feel free to input whatever age<br>you identify as :)</h2>
+                <input type="number" id="age" placeholder="" autocomplete="off"><br><br>
+              <button id="next2" onclick="stage6()">Next</button>
+                <img class="allBack" id="back" onclick="stage4()" src="images/back.png">
+              <h2 class="progress">5/11</h2>
+            <!--   LISTEN FOR KEY PRESSES       -->
+            <script>
+            $("#age").on("keypress", function(e) {
+                if (e.keyCode == 13) {
+                    var age = $("#age").val();
+                    console.log("User age is: " + age);
+                    stage6();
+                }
+            });
+            </script>
+        </div>
+      </div>
+
+      <!--      STAGE 6: GENDER OR KIDS -->
+      <div class="stage6" style="display:none;">
+        <div class="message">
+          <h2>Is this for you or your a child?</h2>
+                  <img class="allBack" id="back" onclick="stage5()" src="images/back.png">
+            <button id="next3" onclick="stage7()">Me</button>
+            <button id="next3" onclick="stage7()">Child</button>
+              <h2 class="progress">6/11</h2>
+        </div>
+      </div>
+      
+     <!--      STAGE 7: RESTRICTIONS    -->
+     <div class="stage7" style="display:none;">
+        <div class="message" id="higherMessage">
+          <h2>Ok, now for the fun stuff!<br>Which of these restrictions apply to you?</h2>
+        <img class="allBack" id="restrictionsBack" onclick="stage6()" src="images/back.png">
+            <button class="restriction" id="milk">Milk</button>
+            <button class="restriction"id="peanuts">Peanuts</button>
+            <button class="restriction" id="fish">Fish</button><br>
+            <button class="restriction" id="shellfish">Shellfish</button>
+            <button class="restriction"id="treenuts">Tree Nuts</button>
+            <button class="restriction"id="wheat">Wheat</button><br>
+            <button class="restriction" id="soya">Soya</button>
+            <button class="restriction" id="eggs">Eggs</button>
+            <button class="restriction" id="sesame">Sesame</button>
+            <br><br><br>
+            <button id="next3" onclick="stage8()">Next</button>
+            <h2 class="progress">7/11</h2>
+            <script>
+                var top_9 = [];
+                
+                $(".restriction").click(function(e) {
+                    if ($(this).css("background-color") == "rgb(242, 45, 45)") {
+                        $(this).css("background-color","white");
+                        $(this).css("color","grey");
+                        top_9.splice( top_9.indexOf($(this).html()),1);
+                    } else {
+                        $(this).css("background-color","#F22D2D");
+                        $(this).css("color","white");
+                        top_9.push($(this).html());
+                    }
+                    
+                });
+                 $("restriction").on("keypress", function(e) {
+                    if (e.keyCode == 13) {
+                            stage8();
+                        }
+                });
+                $("#next3").click(function(e) {
+                    console.log("Restricted Foods:");
+                    console.log(top_9);
+                });
+            </script>
+        </div>
+      </div>
+      
+      <!--      STAGE 8: OTHER RESTRICTIONS -->
+     <div class="stage8" style="display:none;">
+        <div class="message" id="higherMessage">
+          <h1>What other restrictions do you have?</h1>
+            <img class="allBack" id="back" onclick="stage7()" src="images/back.png">
+            <input id="otherRestrictions" ><br><br>
+            <button id="next" onclick="stage9()">Next</button>
+            <h2 id="otherHeading" style="display: none">Other Restrictions:</h2>
+            <div id="restrictionsList"></div>
+            <h2 class="progress">8/11</h2>
+                 <!--   LISTEN FOR KEY PRESSES       -->
+            <script>
+            
+            var otherRestrictions = [];
+            var list = $("#restrictionsList");
+            $("#otherRestrictions").on("keypress", function(e) {
+                
+                var restriction = $("#otherRestrictions").val();
+                var result = errorInput(restriction,false);
+                changeBorder(this,result);
+                
+                if (e.keyCode == 13) {
+                     if (result) {
+                         $("#otherHeading").show();
+                         var allergen = $("#otherRestrictions").val();
+                         list.append("<li>" + allergen + "</li>");
+                         $('#otherRestrictions').val('');
+                         console.log("User Restriction: " + allergen);
+                        }
+                     else {
+                        $("#errorMessageEmail").show();
+                     }
+                    }
+            });
+            </script>
+        </div>
+      </div>
+      
+     <!--      STAGE 9: FUN FACT -- HARD-CODED -->
+      <div class="stage9" style="display:none;" >
+        <div class="message" id="higherMessage">
+          <h1>Did you know...</h1>
+          <img class="allBack" id="funFactBack" onclick="stage8()" src="images/back.png">
+          <h2 id="funFactText">That those like you with a garlic allergy may also react to shallots, asparagus, scallion,
+              chives and leeks?<br><br>
+              This is known as "cross-reactivity."</h2>
+            <br><br>
+            
+            <button id="next4" onclick="stage10()">Next</button>
+            <h2 class="progress">9/11</h2>
+          
+        </div>
+      </div>
+      
+       <!--      STAGE 10: ENCOURAGED FOODS    -->
+     <div class="stage10" style="display:none;" >
+        <div class="message" id="higherMessage">
+          <h2>Ok, now which foods should we encourage<br> the chef to make for you?</h2>
+        <img class="allBack"id="restrictionsBack" onclick="stage9()" src="images/back.png">
+            <button class="encourage" id="fish2">Fish</button>
+            <button class="encourage"id="whiteMeat">White Meat</button>
+            <button class="encourage" id="eggs2">Eggs</button><br>
+            <button class="encourage" id="redMeat">Red Meat</button>
+            <button class="encourage"id="shellFish">Shellfish</button>
+            <button class="encourage"id="protein">Protein</button><br>
+            <br><br><br><br><br>
+            <button id="next5" onclick="stage11()">Next</button>
+            <h2 class="progress">10/11</h2>
+            <script>
+                var encouraged = [];
+                
+                $(".encourage").click(function(e) {
+                    if ($(this).css("background-color") == "rgb(11,142,54)") {
+                        $(this).css("background-color","white");
+                        $(this).css("color","grey");
+                        encouraged.splice( encouraged.indexOf($(this).html()),1);
+                    } else {
+                        $(this).css("background-color","#0B8E36");
+                        $(this).css("color","white");
+                        encouraged.push($(this).html());
+                    }
+                    
+                });
+            
+                $("#next5").click(function(e) {
+                    console.log("Encourage Foods:");
+                    console.log(encouraged);
+                });
+            </script>
+        </div>
+      </div>
+      
+      <!--       STAGE 11: PRESENT CARD  -->
+      <div class="stage11" style="display:none;" >
+        <div class="message" id="higherMessage">
+         
+          <h1 id="finalHeader">Great, you're done!</h1>
+          <h2 id="finalHeader">Here's what your allergy profile looks like:</h2>
+          <img id="idCard" src="images/idCardFilled.png">
+         <img class="allBack" id="finalBack" onclick="stage10()" src="images/backBlack.png"><br>
+             <button id="edit">Edit</button>
+             <button id="buy">Order</button>
+            
+        </div>
+      </div>
+      
+
+
+
+
+
+	</body>
+
+
+</html>

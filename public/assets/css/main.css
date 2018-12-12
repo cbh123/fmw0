@@ -1,0 +1,242 @@
+body {
+  font-family: "IBM Plex Sans", sans-serif;;
+  color:white;
+  margin:0px;
+  background-color: #5461C4;
+  transition: background-color 1s ease-in-out;
+}
+
+h1 {
+    font-size: 28px;
+}
+
+button:focus {outline:0;}
+input:focus {outline:0;}
+
+.button {
+    text-align: center;
+}
+
+/* STAGE 1: HELLO SIZE*/
+.messageShadow h1 {
+  font-size: 700%;
+  margin-top: 10%;
+  margin-bottom: 3%;
+}
+
+/* ALIGNMENT*/
+.message, .messageShadow{
+  text-align: center;
+}
+
+/* SECONDARY HEADER*/
+h2,h3 {
+    font-weight: 100;
+}
+
+h3 {
+    text-align: center;
+}
+
+h3:hover {
+    color:lightblue;
+}
+/* MESSAGE BOX DIV*/
+.message {
+  margin-top: 10%;
+    
+}
+
+/* BACK BUTTON */
+#back,#finalBack {
+    position: fixed;
+    height:30px;
+    margin-right: 0px;
+    margin-top: 1.9%;
+    left: 10%;
+}
+
+
+
+
+/* STAGE 2: ENTER YOUR NAME BOX */
+input {
+    width:250px;
+    height:50px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    color:#547BC4;
+    background-color:white ;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    border: none;
+}
+
+
+/* STAGE 3: INFO BOX*/
+#infoBox {
+    font-weight: 300;
+    font-size: 120%;
+}
+
+#next,#next2,#next3,#next4,#next5{
+    margin-top: 1%;
+    border-radius: 25px;
+    border: none;
+    height: 30px;
+    width: 80px;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: 'IBM Plex Sans';
+    color:#547BC4;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+#next:hover,#next3:hover,#next4:hover,#buy:hover,#edit:hover,#next5:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+#next4{
+    color:rgb(218, 105, 59);
+}
+
+#next5{
+    color:rgb(125, 189, 220);
+}
+
+/* STAGE 4: EMAIL BOX */
+#email {
+    width:400px;
+}
+
+@media only screen and (max-width: 600px) {
+    #email {
+        width:200px;
+    }
+}
+
+/* STAGE 5: AGE BOX */
+#age {
+    width:80px;
+}
+
+/* STAGE 6: RESTRICTION BOX */
+.restriction,.encourage {
+    width: 100px;
+    height: 40px;
+    margin: 10px;
+    background: white;
+    color:grey;
+    border-radius: 25px;
+    border:none;
+    font-size: 15px;
+    font-weight: 100;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.restriction:hover,.encourage:hover {
+      box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+/* restrictions back */
+#restrictionsBack {
+    position: fixed;
+    height:30px;
+    margin-right: 0px;
+    margin-top: 11%;
+    left: 10%;
+}
+
+
+/* STAGE 7: OTHER RESTRICTIONS LIST */
+#restrictionsList {
+    margin-left: auto;
+}
+
+/* STAGE 9: FUN FACT PAGE */
+#funFactBack {
+    position: fixed;
+    height:30px;
+    margin-right: 0px;
+    margin-top: 11%;
+    left: 10%;
+}
+
+h2#funFactText {
+    width:400px;
+    margin: auto;
+}
+
+@media only screen and (max-width: 600px) {
+    h2#funFactText {
+        width:300px;
+        margin: auto;
+    }
+}
+
+/* STAGE 11: FINAL PAGE */
+#finalHeader {
+    color:black;
+}
+
+#idCard {
+    height:300px;
+}
+
+@media only screen and (max-width: 600px) {
+    #idCard {
+        height:190px;
+        margin: auto;
+    }
+    .allBack,#back,#finalBack,#restrictionsBack,#funFactBack {
+        position: fixed;
+        left: 25%;
+        bottom: 35px;
+        transform: translateX(-50%);
+    }
+    .message{
+        margin-top: 40%;
+    }
+    
+    #higherMessage{
+        margin-top: 15%;
+    }
+}
+
+#edit,#buy{
+    margin-top: 1%;
+    border-radius: 25px;
+    border: none;
+    height: 30px;
+    width: 80px;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: 'IBM Plex Sans';
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    margin:10px;
+}
+
+#edit {
+    background-color: white;
+    color: grey;
+}
+
+#buy {
+    background-color: #42BC4C;
+    color:white;
+}
+
+.progress {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 15px;
+}
+
