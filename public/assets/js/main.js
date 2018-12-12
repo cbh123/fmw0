@@ -1,13 +1,13 @@
 function move() {
-  var elem = document.getElementById("myBar"); 
+  var elem = document.getElementById("myBar");
   var width = 1;
   var id = setInterval(frame, 10);
   function frame() {
     if (width >= 100) {
       clearInterval(id);
     } else {
-      width++; 
-      elem.style.width = width + '%'; 
+      width++;
+      elem.style.width = width + '%';
     }
   }
 }
@@ -32,7 +32,7 @@ function errorInput(input,email){
         return(/\S+@\S+\.\S+/.test(input)); // validates email
     } else {
         return(/^[A-Za-z\s]+$/.test(input)); // validates name
-    } 
+    }
 }
 
 // Validate email input
@@ -40,7 +40,7 @@ function validateEmail(email) {
     var re = /\S+@\S+\.\S+/;
     return re.test(email);
 }
-    
+
 
 function showNext2(){
     $("#next2").show();
@@ -103,7 +103,7 @@ function stage5(){
 	$(".stage5").fadeIn(300);
 }
 
-// STAGE 6: GENDER 
+// STAGE 6: GENDER
 function stage6(){
     changeColor("body", blue1);
     $(".stage5").hide();
@@ -129,7 +129,6 @@ function stage8(){
 // STAGE 9: FUN FACT
 function stage9(){
     changeColor("body",orange);
-    console.log($("#restrictionsList"));
     $(".stage8").hide();
     $(".stage10").hide();
 	$(".stage9").fadeIn(300);

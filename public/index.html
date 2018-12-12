@@ -61,7 +61,7 @@
           give <br> us all the info we need to get<br>
           to you eating safer and better.</h2>
 					<br>
-          <button id="next" onclick="stage2()">Start</button>
+          <button class="next" id="next" onclick="stage2()">Start</button>
           <h2 class="progress" onclick="move()">1/11</h2>
       </div>
     </div>
@@ -80,8 +80,8 @@
 				<!-- Break TODO: Not necessary -->
 				<br><br>
 
-				<!-- Next2 Button. TODO: Make invalid if no name.  -->
-        <button id="next2" onclick="stage3()">Next</button>
+				<!-- Next -->
+        <button class="next" onclick="stage3()">Next</button>
 
 				<!-- Error Message. Hidden by default -->
         <h2 id="errorMessageName" style="display:none">Please enter a valid name.</h2>
@@ -137,7 +137,7 @@
 		    </div>
 
 				<!-- Next Button -->
-		    <button id="next" onclick="stage4()">Next</button>
+		    <button class="next" id="next" onclick="stage4()">Next</button>
 
 				<!-- Progress Bar. -->
 		    <h2 class="progress">3/11</h2>
@@ -158,8 +158,8 @@
 				<!-- Break TODO: Unnecessary. -->
 				<br><br>
 
-				<!-- Next2. TODO: Why next2? -->
-		    <button id="next2" onclick="stage5()">Next</button>
+				<!-- Next -->
+		    <button class="next" onclick="stage5()">Next</button>
 
 				<!-- Error Message for invalid email. -->
 		    <h2 id="errorMessageEmail" style="display:none">Please enter a valid email.</h2>
@@ -211,8 +211,8 @@
 				<!-- Break. TODO: Unnecessary -->
 				<br><br>
 
-				<!-- Next2. TODO: Why Next2?  -->
-		    <button id="next2" onclick="stage6()">Next</button>
+				<!-- Next  -->
+		    <button class="next" onclick="stage6()">Next</button>
 
 				<!-- Back button. -->
 		    <img class="allBack" id="back" onclick="stage4()" src="images/back.png">
@@ -243,9 +243,9 @@
 				<!-- Back button  -->
 		    <img class="allBack" id="back" onclick="stage5()" src="images/back.png">
 
-				<!-- Two Next3s. For color? TODO: Fix naming! -->
-		    <button id="next3" onclick="stage7()">Me</button>
-		    <button id="next3" onclick="stage7()">Child</button>
+				<!-- Two Nexts -->
+		    <button class="next" onclick="stage7()">Me</button>
+		    <button class="next" onclick="stage7()">Child</button>
 
 				<!-- Progress Bar. -->
 		    <h2 class="progress">6/11</h2>
@@ -276,8 +276,8 @@
 				<!-- Break. TODO: Unnecessary -->
 				<br><br><br>
 
-				<!-- Next3. TODO: Why next3? -->
-				<button id="next3" onclick="stage8()">Next</button>
+				<!-- Next Submit Restrictions -->
+				<button class="next" id="nextSubmitRestrictions1" onclick="stage8()">Next</button>
 
 				<!-- Progress Bar -->
 				<h2 class="progress">7/11</h2>
@@ -320,7 +320,7 @@
 			      });
 
 						// On next click, go to next page and print to console.
-			      $("#next3").click(function(e) {
+			      $("#nextSubmitRestrictions1").click(function(e) {
 			          console.log("Restricted Foods:");
 			          console.log(top_9);
 			      });
@@ -347,7 +347,7 @@
 				<br><br>
 
 				<!-- Next Button -->
-        <button id="next" onclick="stage9()">Next</button>
+        <button class="next" id="next" onclick="stage9()">Next</button>
 
 				<!-- Other Restrictions Heading, Hidden by default -->
         <h2 id="otherHeading" style="display: none">Other Restrictions:</h2>
@@ -420,8 +420,8 @@
 				<!-- Break TODO: Unnecessary  -->
         <br><br>
 
-				<!-- Next4. TODO: Why tf next4? -->
-        <button id="next4" onclick="stage10()">Next</button>
+				<!-- Next, Orange -->
+        <button class="next" id="nextOrange" onclick="stage10()">Next</button>
 
 				<!-- Progress bar -->
         <h2 class="progress">9/11</h2>
@@ -450,8 +450,8 @@
 				<!-- BIIIIG Break. TODO: Unnecessary -->
         <br><br><br><br><br>
 
-				<!-- Next5?! Wtf. TODO: WHY! -->
-        <button id="next5" onclick="stage11()">Next</button>
+				<!-- Next Blue -->
+        <button class="next" id="nextBlue" onclick="stage11()">Next</button>
 
 				<!-- Progress Bar -->
         <h2 class="progress">10/11</h2>
@@ -472,7 +472,7 @@
 						}
 					});
 
-					$("#next5").click(function(e) {
+					$("#nextBlue").click(function(e) {
 					    console.log("Encourage Foods:");
 					    console.log(encouraged);
 					});
@@ -501,8 +501,8 @@
 				<br>
 
 				<!-- Unfinished edit/order. TODO: Make these!  -->
-				<button id="edit">Edit</button>
-				<button id="buy">Order</button>
+				<button class="next" id="edit">Edit</button>
+				<button class="next" id="buy">Order</button>
 			</div>
 	  </div>
 
